@@ -5,7 +5,7 @@ Simple (hopefully) RESTful API that allows you to create, read, update and delet
 ## Install and run
 
 ```
-git clone blah blah blah
+git clone git@github.com:matthew-andrews/offline-todo-api.git
 cd offline-todo-api
 npm install
 node index.js
