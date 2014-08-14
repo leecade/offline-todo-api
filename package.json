@@ -1,0 +1,29 @@
+{
+  "name": "offline-todo-api",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jshint index.js lib/* test/* && mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/matthew-andrews/offline-todo-api.git"
+  },
+  "author": "Matt Andrews <matt@mattandre.ws>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matthew-andrews/offline-todo-api/issues"
+  },
+  "homepage": "https://github.com/matthew-andrews/offline-todo-api",
+  "devDependencies": {
+    "jshint": "^2.5.3",
+    "mocha": "^1.21.4",
+    "supertest": "^0.13.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.6.3",
+    "express": "^4.8.3",
+    "nedb": "^0.10.7"
+  }
+}
