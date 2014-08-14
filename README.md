@@ -19,7 +19,7 @@ node index.js
 
 - **text** - body of the todo
 
-### POST /todos/:id - read a specific todo
+### GET /todos/:id - read a specific todo
 
 ### PUT /todos/:id - update a specific todo
 
