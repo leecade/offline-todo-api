@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jshint index.js lib/* test/* && mocha"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/matthew-andrews/offline-todo-api",
   "devDependencies": {
-    "jshint": "^2.5.3",
     "mocha": "^1.21.4",
     "supertest": "^0.13.0"
   },
