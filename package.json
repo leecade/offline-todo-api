@@ -17,13 +17,13 @@
   },
   "homepage": "https://github.com/matthew-andrews/offline-todo-api",
   "devDependencies": {
-    "jshint": "~2.5.3",
-    "mocha": "~1.21.4",
-    "supertest": "~.13.0"
+    "jshint": "^2.5.3",
+    "mocha": "^1.21.4",
+    "supertest": "^0.13.0"
   },
   "dependencies": {
-    "body-parser": "~1.6.3",
-    "express": "~4.8.3",
-    "nedb": "~0.10.7"
+    "body-parser": "^1.6.3",
+    "express": "^4.8.3",
+    "nedb": "^0.10.7"
   }
 }
