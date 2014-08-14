@@ -14,7 +14,7 @@ app.use('/todos', todos(db));
 describe('a todo lifecycle', function() {
   var id;
   it('POST /todos should allow creation of a todo', function(done) {
-    var req = request(app)
+    request(app)
       .post('/todos')
       .send({ text: 'Wash the dishes' })
       .expect(200)
