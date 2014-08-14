@@ -19,7 +19,7 @@ describe('api when empty', function() {
       .expect('Content-Type', /json/)
       .expect(200, [], done);
   });
-  it('DELET /todos/:id returns 404', function(done) {
+  it('DELETE /todos/:id returns 404', function(done) {
     request(app)
       .delete('/todos/doesnotexist')
       .expect(404, done);
