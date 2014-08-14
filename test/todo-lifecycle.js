@@ -35,6 +35,17 @@ describe('a todo lifecycle', function() {
        .set('Accept', 'application/json')
        .expect(200, { _id: id, text: 'Wash the dishes' }, done);
   });
+  it('PUT /todos/:id should update that todo', function(done) {
+     request(app)
+       .put('/todos/'+id)
+       .send({ text: 'Wash the dishes and cook some pasta' })
+       .expect(200, done);
+  });
+  it('GET /todos/:id should return the updated todo', function(done) {
+     request(app)
+       .get('/todos/'+id)
+       .expect(200, { _id: id, text: 'Wash the dishes and cook some pasta' }, done);
+  });
   it('DELETE /todos/:id should delete that todo', function(done) {
      request(app)
        .delete('/todos/'+id)
