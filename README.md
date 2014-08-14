@@ -27,6 +27,8 @@ text | string | **Required.** The todo text
 
 ### PUT /todos/:id - update a specific todo
 
+#### Input
+
 Name | Type   | Description
 ---- | ------ | -------------
 text | string | The todo text
