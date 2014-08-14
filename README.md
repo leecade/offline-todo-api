@@ -17,12 +17,18 @@ node index.js
 
 ### POST /todos - create a new todo
 
-- **text** - body of the todo
+#### Input
+
+Name | Type   | Description
+---- | ------ | ---------------------------
+text | string | **Required.** The todo text
 
 ### GET /todos/:id - read a specific todo
 
 ### PUT /todos/:id - update a specific todo
 
-- **text** - body of the todo
+Name | Type   | Description
+---- | ------ | -------------
+text | string | The todo text
 
 ### DELETE /todos/:id - delete a todo

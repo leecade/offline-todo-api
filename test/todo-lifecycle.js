@@ -17,7 +17,7 @@ describe('a todo lifecycle', function() {
     request(app)
       .post('/todos')
       .send({ text: 'Wash the dishes' })
-      .expect(200)
+      .expect(201)
       .end(function(err, res) {
         id = res.text;
         done(err);
