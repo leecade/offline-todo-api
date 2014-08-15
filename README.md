@@ -33,10 +33,10 @@ curl http://localhost:3000/todos -X POST -d '{"text":"Do the dishes"}' -H "Conte
 
 #### Input
 
-Name | Type      | Description
----- | --------- | -------------------------------
-text | string    | **Required.** The todo text
-text | timestamp | **Required.** Last updated time
+Name    | Type      | Description
+------- | --------- | -------------------------------
+text    | string    | **Required.** The todo text
+updated | timestamp | **Required.** Last updated time
 
 ### PUT /todos/:id - update a specific todo
 
@@ -46,10 +46,12 @@ curl http://localhost:3000/todos/MKdbGQHyQl4djUNv -X POST -d '{"text":"Do the di
 
 #### Input
 
-Name | Type      | Description
----- | --------- | -------------------------------
-text | string    | The todo text
-text | timestamp | **Required.** Last updated time
+Name    | Type      | Description
+------- | --------- | -------------------------------
+text    | string    | The todo text
+updated | timestamp | **Required.** Last updated time
+
+Note. PUTs that have `updated` timestamps that are older than the updated timestamps that are stored against any given record will be rejected with `409 Conflict`.
 
 ### DELETE /todos/:id - delete a todo
 
