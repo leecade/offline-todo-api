@@ -40,7 +40,7 @@ text | string | **Required.** The todo text
 ### PUT /todos/:id - update a specific todo
 
 ```
-curl http://localhost:3000/todos/MKdbGQHyQl4djUNv -X POST -d "{ _id: 'MKdbGQHyQl4djUNv', text: 'Wash the dishes and walk the dog' }"
+curl http://localhost:3000/todos/MKdbGQHyQl4djUNv -X PUT -d "{ _id: 'MKdbGQHyQl4djUNv', text: 'Wash the dishes and walk the dog' }"
 ```
 
 #### Input
