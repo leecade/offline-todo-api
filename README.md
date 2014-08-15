@@ -28,7 +28,7 @@ curl http://localhost:3000/todos/MKdbGQHyQl4djUNv
 ### POST /todos - create a new todo
 
 ```
-curl http://localhost:3000/todos -X POST -d "{ text: 'Wash the dishes' }"
+curl http://localhost:3000/todos -X POST -d '{"text":"Do the dishes"}' -H "Content-Type: application/json"
 ```
 
 #### Input
@@ -40,14 +40,13 @@ text | string | **Required.** The todo text
 ### PUT /todos/:id - update a specific todo
 
 ```
-curl http://localhost:3000/todos/MKdbGQHyQl4djUNv -X PUT -d "{ _id: 'MKdbGQHyQl4djUNv', text: 'Wash the dishes and walk the dog' }"
+curl http://localhost:3000/todos/MKdbGQHyQl4djUNv -X POST -d '{"text":"Do the dishes and walk the dog"}' -H "Content-Type: application/json"
 ```
 
 #### Input
 
 Name | Type   | Description
----- | ------ | ------------------------------------------
-_id  | string | **Required.** The id of the todo to update
+---- | ------ | -------------
 text | string | The todo text
 
 ### DELETE /todos/:id - delete a todo
