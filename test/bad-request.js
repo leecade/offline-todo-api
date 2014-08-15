@@ -17,4 +17,20 @@ describe('bad requests to the api', function() {
       .post('/todos')
       .expect(400, [], done);
   });
+  it('POST without updated time return 400', function(done) {
+    request(app)
+      .post('/todos')
+      .send({ text: "I don't have the time" })
+      .expect(400)
+      .end(function(err, res) {
+        id = res.text;
+        done(err);
+      });
+  });
+  it('PUT without updated time return 400', function(done) {
+    request(app)
+      .put('/todos/blahblah')
+      .send({ text: "I don't have the time" })
+      .expect(400, done);
+  });
 });
