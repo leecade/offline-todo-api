@@ -33,9 +33,10 @@ curl http://localhost:3000/todos -X POST -d '{"text":"Do the dishes"}' -H "Conte
 
 #### Input
 
-Name | Type   | Description
----- | ------ | ---------------------------
-text | string | **Required.** The todo text
+Name | Type      | Description
+---- | --------- | -------------------------------
+text | string    | **Required.** The todo text
+text | timestamp | **Required.** Last updated time
 
 ### PUT /todos/:id - update a specific todo
 
@@ -45,9 +46,10 @@ curl http://localhost:3000/todos/MKdbGQHyQl4djUNv -X POST -d '{"text":"Do the di
 
 #### Input
 
-Name | Type   | Description
----- | ------ | -------------
-text | string | The todo text
+Name | Type      | Description
+---- | --------- | -------------------------------
+text | string    | The todo text
+text | timestamp | **Required.** Last updated time
 
 ### DELETE /todos/:id - delete a todo
 
