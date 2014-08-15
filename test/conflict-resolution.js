@@ -38,4 +38,10 @@ describe('conflict resolution', function() {
       .send({ text: 'Wash the dishes and make a sandwich', updated: now+5 })
       .expect(409, done);
   });
+
+  after(function(done) {
+    request(app)
+      .delete('/todos/'+id)
+      .expect(200, done);
+  });
 });
