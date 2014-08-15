@@ -17,6 +17,7 @@ describe('bad requests to the api', function() {
       .post('/todos')
       .expect(400, [], done);
   });
+
   it('POST without updated time return 400', function(done) {
     request(app)
       .post('/todos')
@@ -27,6 +28,7 @@ describe('bad requests to the api', function() {
         done(err);
       });
   });
+
   it('PUT without updated time return 400', function(done) {
     request(app)
       .put('/todos/blahblah')

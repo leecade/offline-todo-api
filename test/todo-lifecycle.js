@@ -24,29 +24,34 @@ describe('a todo lifecycle', function() {
         done(err);
       });
   });
+
   it('GET /todos should return just created todo in an array', function(done) {
      request(app)
        .get('/todos')
        .set('Accept', 'application/json')
        .expect(200, [{ _id: id, text: 'Wash the dishes', updated: now }], done);
   });
+
   it('GET /todos/:id should return just that todo', function(done) {
      request(app)
        .get('/todos/'+id)
        .set('Accept', 'application/json')
        .expect(200, { _id: id, text: 'Wash the dishes', updated: now }, done);
   });
+
   it('PUT /todos/:id should update that todo', function(done) {
      request(app)
        .put('/todos/'+id)
        .send({ text: 'Wash the dishes and cook some pasta', updated: now+10 })
        .expect(200, done);
   });
+
   it('GET /todos/:id should return the updated todo', function(done) {
      request(app)
        .get('/todos/'+id)
        .expect(200, { _id: id, text: 'Wash the dishes and cook some pasta', updated: now+10 }, done);
   });
+
   it('DELETE /todos/:id should delete that todo', function(done) {
      request(app)
        .delete('/todos/'+id)
