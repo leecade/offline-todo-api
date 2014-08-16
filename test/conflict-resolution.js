@@ -42,7 +42,7 @@ describe('conflict resolution', function() {
   it('after deleting the todo', function(done) {
     request(app)
       .delete('/todos/'+id)
-      .expect(204, '', done);
+      .expect(202, '', done);
   });
 
   it('should reject PUTs to deleted todos', function(done) {

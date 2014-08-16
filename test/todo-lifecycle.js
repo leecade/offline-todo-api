@@ -55,6 +55,6 @@ describe('a todo lifecycle', function() {
   it('DELETE /todos/:id should delete that todo and return nothing', function(done) {
      request(app)
        .delete('/todos/'+id)
-       .expect(204, '', done);
+       .expect(202, '', done);
   });
 });
