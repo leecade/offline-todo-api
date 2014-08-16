@@ -9,4 +9,4 @@ deploy:
   app: offline-todo-api
   on:
     repo: matthew-andrews/offline-todo-api
-    node: 0.10
+    node: '0.10'
