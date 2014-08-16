@@ -39,9 +39,16 @@ describe('conflict resolution', function() {
       .expect(409, done);
   });
 
-  after(function(done) {
+  it('after deleting the todo', function(done) {
     request(app)
       .delete('/todos/'+id)
       .expect(200, done);
+  });
+
+  it('should reject PUTs to deleted todos', function(done) {
+    request(app)
+      .put('/todos/'+id)
+      .send({ text: 'Wash the dishes and make a sandwich', updated: now+5 })
+      .expect(409, done);
   });
 });
