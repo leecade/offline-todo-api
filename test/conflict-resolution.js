@@ -29,7 +29,7 @@ describe('conflict resolution', function() {
     request(app)
       .put('/todos/'+id)
       .send({ text: 'Wash the dishes and walk the dog', updated: now+10 })
-      .expect(200, done);
+      .expect(204, '', done);
   });
 
   it('should reject PUTs that have old updated times', function(done) {
@@ -42,7 +42,7 @@ describe('conflict resolution', function() {
   it('after deleting the todo', function(done) {
     request(app)
       .delete('/todos/'+id)
-      .expect(200, done);
+      .expect(204, '', done);
   });
 
   it('should reject PUTs to deleted todos', function(done) {

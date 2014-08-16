@@ -39,11 +39,11 @@ describe('a todo lifecycle', function() {
        .expect(200, { _id: id, text: 'Wash the dishes', updated: now }, done);
   });
 
-  it('PUT /todos/:id should update that todo', function(done) {
+  it('PUT /todos/:id should update that todo and return nothing', function(done) {
      request(app)
        .put('/todos/'+id)
        .send({ text: 'Wash the dishes and cook some pasta', updated: now+10 })
-       .expect(200, done);
+       .expect(204, '', done);
   });
 
   it('GET /todos/:id should return the updated todo', function(done) {
@@ -52,9 +52,9 @@ describe('a todo lifecycle', function() {
        .expect(200, { _id: id, text: 'Wash the dishes and cook some pasta', updated: now+10 }, done);
   });
 
-  it('DELETE /todos/:id should delete that todo', function(done) {
+  it('DELETE /todos/:id should delete that todo and return nothing', function(done) {
      request(app)
        .delete('/todos/'+id)
-       .expect(200, '', done);
+       .expect(204, '', done);
   });
 });
