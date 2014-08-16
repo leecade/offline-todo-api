@@ -31,7 +31,7 @@ describe('a todo lifecycle', function() {
      request(app)
        .get('/todos')
        .set('Accept', 'application/json')
-       .expect(200, [{ created: now, text: 'Wash the dishes', updated: now }], done);
+       .expect(200, [{ created: now, text: 'Wash the dishes', updated: now }, { created: now+10, text: 'Wash the dishes', updated: now+10 }], done);
   });
 
   it('GET /todos/:created should return just that todo', function(done) {
