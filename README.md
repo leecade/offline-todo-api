@@ -25,7 +25,7 @@ node index.js
 curl https://offline-todo-api.herokuapp.com/todos
 ```
 
-### GET /todos/:id - read a specific todo
+### GET /todos/:created - read a specific todo
 
 ```
 curl https://offline-todo-api.herokuapp.com/todos/1408228141678
@@ -58,7 +58,7 @@ Name    | Type      | Description
 text    | string    | **Required**. The todo text
 updated | timestamp | **Required**. Last updated time
 
-### DELETE /todos/:id - delete a todo
+### DELETE /todos/:created - delete a todo
 
 ```
 curl https://offline-todo-api.herokuapp.com/todos/1408228141678 -X DELETE
