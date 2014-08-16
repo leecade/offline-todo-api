@@ -20,7 +20,7 @@ describe('api when empty', function() {
       .expect(200, [], done);
   });
 
-  it('GET /todos/:id responds with 404', function(done) {
+  it('GET /todos/:created responds with 404', function(done) {
     request(app)
       .get('/todos/doesnotexist')
       .expect(404, '', done);

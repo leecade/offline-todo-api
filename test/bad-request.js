@@ -18,7 +18,7 @@ describe('bad requests to the api', function() {
       .expect(400, [], done);
   });
 
-  it('POST without updated time return 400', function(done) {
+  it('POST without updated or created time return 400', function(done) {
     request(app)
       .post('/todos')
       .send({ text: "I don't have the time" })
