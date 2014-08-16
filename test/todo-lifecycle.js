@@ -81,4 +81,10 @@ describe('a todo lifecycle', function() {
       .send({ text: 'Wash the dishes', updated: now+10 })
       .expect(410, done);
   });
+
+  it('GET /todos/:created should respond with 410 if requesting a todo that previously existed', function(done) {
+    request(app)
+      .get('/todos/'+(now+10))
+      .expect(410, done);
+  });
 });
