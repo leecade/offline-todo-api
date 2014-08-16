@@ -35,8 +35,8 @@ curl https://offline-todo-api.herokuapp.com/todos -X POST -d '{"text":"Do the di
 
 Name    | Type      | Description
 ------- | --------- | -------------------------------
-text    | string    | **Required.** The todo text
-updated | timestamp | **Required.** Last updated time
+text    | string    | **Required**. The todo text
+updated | timestamp | **Required**. Last updated time
 
 ### PUT /todos/:id - update a specific todo
 
@@ -48,13 +48,22 @@ curl https://offline-todo-api.herokuapp.com/todos/MKdbGQHyQl4djUNv -X POST -d '{
 
 Name    | Type      | Description
 ------- | --------- | -------------------------------
-text    | string    | The todo text
-updated | timestamp | **Required.** Last updated time
+text    | string    | **Required**. The todo text
+updated | timestamp | **Required**. Last updated time
 
-Note. PUTs that have `updated` timestamps that are older than the updated timestamps that are stored against any given record will be rejected with `409 Conflict`.
+Note. PUTs that have `updated` timestamps that are less than updated timestamps that are stored against any given record on the server will be rejected with `409 Conflict`.  If the timestamp is equal to the alue stored on the server it will return `409 Conflict` if the text is different, otherwise it will accept it.
 
 ### DELETE /todos/:id - delete a todo
 
 ```
 curl https://offline-todo-api.herokuapp.com/todos/MKdbGQHyQl4djUNv -X DELETE
 ```
+
+#### Input
+
+Name    | Type      | Description
+------- | --------- | -------------------------------
+text    | string    | **Required**. The todo text
+updated | timestamp | **Required**. Last updated time
+
+Note. DELETEs that have `updated` timestamps that are less than updated timestamps that are stored against any given record on the server will be rejected with `409 Conflict`.  If the timestamp is equal to the alue stored on the server it will return `409 Conflict` if the text is different, otherwise it will accept it.
