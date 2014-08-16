@@ -4,7 +4,7 @@ Simple (hopefully) RESTful API that allows you to create, read, update and delet
 
 ## Conflict resolution strategy
 
-Any update (PUT) or delete (DELTE) requests must provide a `timestamp` and the value of `text`.  If the provided timestamp is older than the `timestamp` stored on the server the PUT or DELETE will be rejected.
+Any update (PUT) or delete (DELETE) requests must provide a `timestamp` and the value of `text`.  If the provided timestamp is older than the `timestamp` stored on the server the PUT or DELETE will be rejected.
 
 Where there is a draw (ie. the `timestamp`s are equal) the server will look at the value of `text` - if the server's and the request's values match the PUT or DELETE will be accepted.  If they do not match, the PUT or DELETE will be rejected.
 
