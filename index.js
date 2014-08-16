@@ -7,6 +7,9 @@ var port = Number(process.env.PORT || 3000);
 var db = new Datastore({ filename: 'todos', autoload: true });
 express()
   .use(cors())
+  .get('/', function(req, res) {
+    res.redirect(302, 'https://github.com/matthew-andrews/offline-todo-api')
+  })
   .use('/todos', todos(db))
   .listen(port);
 console.log('listening on '+port);

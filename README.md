@@ -16,19 +16,19 @@ node index.js
 ### GET /todos - list all todos
 
 ```
-curl http://localhost:3000/todos
+curl https://offline-todo-api.herokuapp.com/todos
 ```
 
 ### GET /todos/:id - read a specific todo
 
 ```
-curl http://localhost:3000/todos/MKdbGQHyQl4djUNv
+curl https://offline-todo-api.herokuapp.com/todos/MKdbGQHyQl4djUNv
 ```
 
 ### POST /todos - create a new todo
 
 ```
-curl http://localhost:3000/todos -X POST -d '{"text":"Do the dishes"}' -H "Content-Type: application/json"
+curl https://offline-todo-api.herokuapp.com/todos -X POST -d '{"text":"Do the dishes"}' -H "Content-Type: application/json"
 ```
 
 #### Input
@@ -41,7 +41,7 @@ updated | timestamp | **Required.** Last updated time
 ### PUT /todos/:id - update a specific todo
 
 ```
-curl http://localhost:3000/todos/MKdbGQHyQl4djUNv -X POST -d '{"text":"Do the dishes and walk the dog"}' -H "Content-Type: application/json"
+curl https://offline-todo-api.herokuapp.com/todos/MKdbGQHyQl4djUNv -X POST -d '{"text":"Do the dishes and walk the dog"}' -H "Content-Type: application/json"
 ```
 
 #### Input
@@ -56,5 +56,5 @@ Note. PUTs that have `updated` timestamps that are older than the updated timest
 ### DELETE /todos/:id - delete a todo
 
 ```
-curl http://localhost:3000/todos/MKdbGQHyQl4djUNv -X DELETE
+curl https://offline-todo-api.herokuapp.com/todos/MKdbGQHyQl4djUNv -X DELETE
 ```
