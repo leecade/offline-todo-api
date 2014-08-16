@@ -32,6 +32,22 @@ describe('conflict resolution', function() {
       .expect(204, '', done);
   });
 
+  it('should accept PUTs that have equal updated times and no change to content', function(done) {
+    request(app)
+      .put('/todos/'+id)
+      .send({ text: 'Wash the dishes and walk the dog', updated: now+10 })
+      .expect(204, '', done);
+  });
+
+  // If two clients provide the same updated time but different content - the winner
+  // is the one that 'gets in first'
+  it('should reject PUTs that have equal updated times but changed to content', function(done) {
+    request(app)
+      .put('/todos/'+id)
+      .send({ text: 'Walk the dog', updated: now+10 })
+      .expect(409, '', done);
+  });
+
   it('should reject PUTs that have old updated times', function(done) {
     request(app)
       .put('/todos/'+id)
