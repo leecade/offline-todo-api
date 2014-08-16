@@ -67,4 +67,18 @@ describe('a todo lifecycle', function() {
        .send({ text: 'Wash the dishes', updated: now+10 })
        .expect(202, '', done);
   });
+
+  it('PUT /todos/:created should not be able to recreate a todo that had previously existed', function(done) {
+    request(app)
+      .post('/todos')
+      .send({ text: 'Wash the dishes', created: now, updated: now })
+      .expect(410, done);
+  });
+
+  it('POST /todos/:created should not be able to recreate a todo that had previously existed', function(done) {
+    request(app)
+      .put('/todos/'+(now+10))
+      .send({ text: 'Wash the dishes', updated: now+10 })
+      .expect(410, done);
+  });
 });
