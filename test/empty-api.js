@@ -20,9 +20,10 @@ describe('api when empty', function() {
       .expect(200, [], done);
   });
 
-  it('DELETE /todos/:id returns 404', function(done) {
+  it('should reject PUTs to non-existent todos', function(done) {
     request(app)
-      .delete('/todos/doesnotexist')
-      .expect(404, done);
+      .put('/todos/doesnotexist')
+      .send({ text: 'Wash the dishes and make a sandwich', updated: Date.now() })
+      .expect(409, done);
   });
 });

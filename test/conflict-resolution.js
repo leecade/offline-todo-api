@@ -61,10 +61,9 @@ describe('conflict resolution', function() {
       .expect(202, '', done);
   });
 
-  it('should reject PUTs to deleted todos', function(done) {
+  it('DELETEs to already deleted todos should be accepted', function(done) {
     request(app)
-      .put('/todos/'+id)
-      .send({ text: 'Wash the dishes and make a sandwich', updated: now+5 })
-      .expect(409, done);
+      .delete('/todos/'+id)
+      .expect(202, done);
   });
 });
