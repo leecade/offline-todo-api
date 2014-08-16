@@ -2,6 +2,12 @@
 
 Simple (hopefully) RESTful API that allows you to create, read, update and delete items from your todo list.
 
+## Conflict resolution strategy
+
+Any update (PUT) or delete (DELTE) requests must provide a `timestamp` and the value of `text`.  If the provided timestamp is older than the `timestamp` stored on the server the PUT or DELETE will be rejected.
+
+Where there is a draw (ie. the `timestamp`s are equal) the server will look at the value of `text` - if the server's and the request's values match the PUT or DELETE will be accepted.  If they do not match, the PUT or DELETE will be rejected.
+
 ## Install and run
 
 ```
@@ -51,8 +57,6 @@ Name    | Type      | Description
 text    | string    | **Required**. The todo text
 updated | timestamp | **Required**. Last updated time
 
-Note. PUTs that have `updated` timestamps that are less than updated timestamps that are stored against any given record on the server will be rejected with `409 Conflict`.  If the timestamp is equal to the alue stored on the server it will return `409 Conflict` if the text is different, otherwise it will accept it.
-
 ### DELETE /todos/:id - delete a todo
 
 ```
@@ -65,5 +69,3 @@ Name    | Type      | Description
 ------- | --------- | -------------------------------
 text    | string    | **Required**. The todo text
 updated | timestamp | **Required**. Last updated time
-
-Note. DELETEs that have `updated` timestamps that are less than updated timestamps that are stored against any given record on the server will be rejected with `409 Conflict`.  If the timestamp is equal to the alue stored on the server it will return `409 Conflict` if the text is different, otherwise it will accept it.
