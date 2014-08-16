@@ -35,4 +35,10 @@ describe('bad requests to the api', function() {
       .send({ text: "I don't have the time" })
       .expect(400, done);
   });
+
+  it('DELETE without updated time and text return 400', function(done) {
+    request(app)
+      .delete('/todos/anyoldtodo')
+      .expect(400, [], done);
+  });
 });

@@ -41,10 +41,24 @@ describe('conflict resolution', function() {
 
   // If two clients provide the same updated time but different content - the winner
   // is the one that 'gets in first'
-  it('should reject PUTs that have equal updated times but changed to content', function(done) {
+  it('should reject PUTs that have equal updated times but changes to content', function(done) {
     request(app)
       .put('/todos/'+id)
       .send({ text: 'Walk the dog', updated: now+10 })
+      .expect(409, '', done);
+  });
+
+  it('should reject DELETEs that have equal updated times but changes to content', function(done) {
+    request(app)
+      .delete('/todos/'+id)
+      .send({ text: 'Walk the dog', updated: now+10 })
+      .expect(409, '', done);
+  });
+
+  it('should reject DELETEs that have old updated times', function(done) {
+    request(app)
+      .delete('/todos/'+id)
+      .send({ text: 'Wash the dishes and make a sandwich', updated: now+5 })
       .expect(409, '', done);
   });
 
@@ -58,12 +72,14 @@ describe('conflict resolution', function() {
   it('after deleting the todo', function(done) {
     request(app)
       .delete('/todos/'+id)
+      .send({ text: 'Wash the dishes and walk the dog', updated: now+10 })
       .expect(202, '', done);
   });
 
   it('DELETEs to already deleted todos should be accepted', function(done) {
     request(app)
       .delete('/todos/'+id)
+      .send({ text: 'Wash the dishes and walk the dog', updated: now+10 })
       .expect(202, done);
   });
 });

@@ -20,6 +20,12 @@ describe('api when empty', function() {
       .expect(200, [], done);
   });
 
+  it('GET /todos/:id responds with 404', function(done) {
+    request(app)
+      .get('/todos/doesnotexist')
+      .expect(404, '', done);
+  });
+
   it('should reject PUTs to non-existent todos', function(done) {
     request(app)
       .put('/todos/doesnotexist')
