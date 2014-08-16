@@ -20,6 +20,13 @@ describe('a todo lifecycle', function() {
       .expect(201, done);
   });
 
+  it('PUT /todos/:created should also allow creation of a todo', function(done) {
+    request(app)
+      .put('/todos/'+(now+10))
+      .send({ text: 'Wash the dishes', updated: now+10 })
+      .expect(201, done);
+  });
+
   it('GET /todos should return just created todo in an array', function(done) {
      request(app)
        .get('/todos')
@@ -51,6 +58,13 @@ describe('a todo lifecycle', function() {
      request(app)
        .delete('/todos/'+now)
        .send({ text: 'Wash the dishes and cook some pasta', updated: now+10 })
+       .expect(202, '', done);
+  });
+
+  it('DELETE /todos/:created should delete that todo and return nothing', function(done) {
+     request(app)
+       .delete('/todos/'+(now+10))
+       .send({ text: 'Wash the dishes', updated: now+10 })
        .expect(202, '', done);
   });
 });

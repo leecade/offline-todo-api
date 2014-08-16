@@ -25,11 +25,4 @@ describe('api when empty', function() {
       .get('/todos/doesnotexist')
       .expect(404, '', done);
   });
-
-  it('should reject PUTs to non-existent todos', function(done) {
-    request(app)
-      .put('/todos/doesnotexist')
-      .send({ text: 'Wash the dishes and make a sandwich', updated: Date.now() })
-      .expect(409, done);
-  });
 });

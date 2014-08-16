@@ -45,7 +45,7 @@ text    | string    | **Required**. The todo text
 created | timestamp | **Required**. Created time, used as uuid
 updated | timestamp | **Required**. Last updated time
 
-### PUT /todos/:created - update a specific todo
+### PUT /todos/:created - create or update a specific todo
 
 ```
 curl https://offline-todo-api.herokuapp.com/todos/1408228141678 -X POST -d '{"text":"Do the dishes and walk the dog","updated":1408182141855}' -H "Content-Type: application/json"
