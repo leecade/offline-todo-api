@@ -70,3 +70,5 @@ Name    | Type      | Description
 ------- | --------- | -------------------------------
 text    | string    | **Required**. The todo text
 updated | timestamp | **Required**. Last updated time
+
+Note: once an item has been deleted a todo with the same `created` timestamp cannot be recreated.
