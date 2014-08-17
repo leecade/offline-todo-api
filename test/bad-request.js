@@ -18,7 +18,7 @@ describe('bad requests to the api', function() {
       .expect(400, [], done);
   });
 
-  it('POST without updated or created time return 400', function(done) {
+  it('POST without created time return 400', function(done) {
     request(app)
       .post('/todos')
       .send({ text: "I don't have the time" })
@@ -29,16 +29,10 @@ describe('bad requests to the api', function() {
       });
   });
 
-  it('PUT without updated time return 400', function(done) {
+  it('PUT without text time return 400', function(done) {
     request(app)
       .put('/todos/blahblah')
-      .send({ text: "I don't have the time" })
+      .send({})
       .expect(400, done);
-  });
-
-  it('DELETE without updated time and text return 400', function(done) {
-    request(app)
-      .delete('/todos/anyoldtodo')
-      .expect(400, [], done);
   });
 });
