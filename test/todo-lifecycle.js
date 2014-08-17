@@ -16,11 +16,11 @@ describe('a todo lifecycle', function() {
   it('POST /todos should allow creation of a todo', function(done) {
     request(app)
       .post('/todos')
-      .send({ text: 'Wash the dishes', created: now })
+      .send({ text: 'Wash the dishes', _id: String(now) })
       .expect(201, done);
   });
 
-  it('PUT /todos/:created should also allow creation of a todo', function(done) {
+  it('PUT /todos/:id should also allow creation of a todo', function(done) {
     request(app)
       .put('/todos/'+(now+10))
       .send({ text: 'Wash the dishes' })
@@ -31,56 +31,56 @@ describe('a todo lifecycle', function() {
      request(app)
        .get('/todos')
        .set('Accept', 'application/json')
-       .expect(200, [{ created: now, text: 'Wash the dishes' }, { created: now+10, text: 'Wash the dishes' }], done);
+       .expect(200, [{ _id: String(now), text: 'Wash the dishes' }, { _id: String(now+10), text: 'Wash the dishes' }], done);
   });
 
-  it('GET /todos/:created should return just that todo', function(done) {
+  it('GET /todos/:id should return just that todo', function(done) {
      request(app)
-       .get('/todos/'+now)
+       .get('/todos/'+String(now))
        .set('Accept', 'application/json')
-       .expect(200, { created: now, text: 'Wash the dishes' }, done);
+       .expect(200, { _id: String(now), text: 'Wash the dishes' }, done);
   });
 
-  it('PUT /todos/:created should not update that todo and should return nothing', function(done) {
+  it('PUT /todos/:id should not update that todo and should return nothing', function(done) {
      request(app)
-       .put('/todos/'+now)
+       .put('/todos/'+String(now))
        .send({ text: 'Wash the dishes and cook some pasta' })
        .expect(405, '', done);
   });
 
-  it('GET /todos/:created should return the un-updated todo', function(done) {
+  it('GET /todos/:id should return the un-updated todo', function(done) {
      request(app)
-       .get('/todos/'+now)
-       .expect(200, { created: now, text: 'Wash the dishes' }, done);
+       .get('/todos/'+String(now))
+       .expect(200, { _id: String(now), text: 'Wash the dishes' }, done);
   });
 
-  it('DELETE /todos/:created should delete that todo and return nothing', function(done) {
+  it('DELETE /todos/:id should delete that todo and return nothing', function(done) {
      request(app)
-       .delete('/todos/'+now)
+       .delete('/todos/'+String(now))
        .expect(204, '', done);
   });
 
-  it('DELETE /todos/:created should delete that todo and return nothing', function(done) {
+  it('DELETE /todos/:id should delete that todo and return nothing', function(done) {
      request(app)
        .delete('/todos/'+(now+10))
        .expect(204, '', done);
   });
 
-  it('PUT /todos/:created should not be able to recreate a todo that had previously existed', function(done) {
+  it('PUT /todos/:id should not be able to recreate a todo that had previously existed', function(done) {
     request(app)
       .post('/todos')
-      .send({ text: 'Wash the dishes', created: now })
+      .send({ text: 'Wash the dishes', _id: String(now) })
       .expect(410, done);
   });
 
-  it('POST /todos/:created should not be able to recreate a todo that had previously existed', function(done) {
+  it('POST /todos/:id should not be able to recreate a todo that had previously existed', function(done) {
     request(app)
       .put('/todos/'+(now+10))
       .send({ text: 'Wash the dishes' })
       .expect(410, done);
   });
 
-  it('GET /todos/:created should respond with 410 if requesting a todo that previously existed', function(done) {
+  it('GET /todos/:id should respond with 410 if requesting a todo that previously existed', function(done) {
     request(app)
       .get('/todos/'+(now+10))
       .expect(410, done);

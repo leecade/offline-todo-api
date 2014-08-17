@@ -16,20 +16,20 @@ describe('creating multiple todos with the same id', function() {
   it('after creating a normal todo', function(done) {
     request(app)
       .post('/todos')
-      .send({ text: 'Wash the dishes', created: now })
+      .send({ text: 'Wash the dishes', _id: String(now) })
       .expect(201, done);
   });
 
   it('should not allow the creation of another todo with the same id', function(done) {
     request(app)
       .post('/todos')
-      .send({ text: 'Wash the dishes', created: now })
+      .send({ text: 'Wash the dishes', _id: String(now) })
       .expect(409, done);
   });
 
   it('after deleting the todo', function(done) {
     request(app)
-      .delete('/todos/'+now)
+      .delete('/todos/'+String(now))
       .expect(204, done);
   });
 });
