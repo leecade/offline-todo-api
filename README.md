@@ -19,7 +19,7 @@ node index.js
 curl https://offline-todo-api.herokuapp.com/todos
 ```
 
-### GET /todos/:created - read a specific todo
+### GET /todos/:id - read a specific todo
 
 ```
 curl https://offline-todo-api.herokuapp.com/todos/1408228141678
@@ -34,11 +34,11 @@ curl https://offline-todo-api.herokuapp.com/todos -X POST -d '{"text":"Do the di
 #### Input
 
 Name    | Type      | Description
-------- | --------- | ----------------------------------------
+------- | --------- | ------------------------------------
 text    | string    | **Required**. The todo text
-created | timestamp | **Required**. Created time, used as uuid
+id      | mixed     | **Required**. Some unique identifier
 
-### PUT /todos/:created - create or update a specific todo
+### PUT /todos/:id - create or update a specific todo
 
 ```
 curl https://offline-todo-api.herokuapp.com/todos/1408228141678 -X POST -d '{"text":"Do the dishes and walk the dog"}' -H "Content-Type: application/json"
@@ -52,10 +52,10 @@ text    | string    | **Required**. The todo text
 
 Note: actually updating the text of an existing todo is currently not supported.
 
-### DELETE /todos/:created - delete a todo
+### DELETE /todos/:id - delete a todo
 
 ```
 curl https://offline-todo-api.herokuapp.com/todos/1408228141678 -X DELETE
 ```
 
-Note: once an item has been deleted a todo with the same `created` timestamp cannot be recreated.
+Note: once an item has been deleted a todo its `id` cannot be reused.
