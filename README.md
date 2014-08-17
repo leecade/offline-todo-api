@@ -59,3 +59,7 @@ curl https://offline-todo-api.herokuapp.com/todos/1408228141678 -X DELETE
 ```
 
 Note: once an item has been deleted a todo its `id` cannot be reused.
+
+### GET /todos/stream
+
+Can be used as a event source that will stream an `updated` notification whenever a todo is created or deleted.
