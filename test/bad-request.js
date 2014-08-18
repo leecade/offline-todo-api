@@ -29,10 +29,10 @@ describe('bad requests to the api', function() {
       });
   });
 
-  it('PUT without text time return 400', function(done) {
+  it('PUT returns 405', function(done) {
     request(app)
       .put('/todos/blahblah')
-      .send({})
-      .expect(400, done);
+      .send({ text: 'Forget me not' })
+      .expect(405, done);
   });
 });

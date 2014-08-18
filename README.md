@@ -2,6 +2,8 @@
 
 Simple (hopefully) RESTful API that allows you to create, read, ~~update~~ and delete items from your todo list.
 
+Note: PUT is not supported as todos are intentionally not updateable in this version.
+
 ## Install and run
 
 ```
@@ -37,20 +39,6 @@ Name    | Type      | Description
 ------- | --------- | ------------------------------------
 text    | string    | **Required**. The todo text
 id      | mixed     | **Required**. Some unique identifier
-
-### PUT /todos/:id - create or update a specific todo
-
-```
-curl https://offline-todo-api.herokuapp.com/todos/1408228141678 -X POST -d '{"text":"Do the dishes and walk the dog"}' -H "Content-Type: application/json"
-```
-
-#### Input
-
-Name    | Type      | Description
-------- | --------- | -------------------------------
-text    | string    | **Required**. The todo text
-
-Note: actually updating the text of an existing todo is currently not supported.
 
 ### DELETE /todos/:id - delete a todo
 
