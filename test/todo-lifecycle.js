@@ -55,7 +55,7 @@ describe('a todo lifecycle', function() {
 
   it('DELETE /todos/:id should delete that todo and return nothing', function(done) {
      request(app)
-       .delete('/todos/'+(now))
+       .delete('/todos/'+String(now))
        .expect(204, '', done);
   });
 
@@ -75,7 +75,7 @@ describe('a todo lifecycle', function() {
 
   it('GET /todos/:id should respond with 410 if requesting a todo that previously existed', function(done) {
     request(app)
-      .get('/todos/'+(now))
+      .get('/todos/'+String(now))
       .expect(410, done);
   });
 });
