@@ -20,18 +20,11 @@ describe('a todo lifecycle', function() {
       .expect(201, done);
   });
 
-  it('PUT /todos/:id should also allow creation of a todo', function(done) {
-    request(app)
-      .put('/todos/'+(now+10))
-      .send({ text: 'Wash the dishes' })
-      .expect(201, done);
-  });
-
   it('GET /todos should return just created todo in an array', function(done) {
      request(app)
        .get('/todos')
        .set('Accept', 'application/json')
-       .expect(200, [{ _id: String(now), text: 'Wash the dishes' }, { _id: String(now+10), text: 'Wash the dishes' }], done);
+       .expect(200, [{ _id: String(now), text: 'Wash the dishes' }], done);
   });
 
   it('GET /todos/:id should return just that todo', function(done) {
@@ -62,7 +55,7 @@ describe('a todo lifecycle', function() {
 
   it('DELETE /todos/:id should delete that todo and return nothing', function(done) {
      request(app)
-       .delete('/todos/'+(now+10))
+       .delete('/todos/'+String(now))
        .expect(204, '', done);
   });
 
@@ -75,14 +68,14 @@ describe('a todo lifecycle', function() {
 
   it('POST /todos/:id should not be able to recreate a todo that had previously existed', function(done) {
     request(app)
-      .put('/todos/'+(now+10))
-      .send({ text: 'Wash the dishes' })
+      .post('/todos')
+      .send({ _id: String(now), text: 'Wash the dishes' })
       .expect(410, done);
   });
 
   it('GET /todos/:id should respond with 410 if requesting a todo that previously existed', function(done) {
     request(app)
-      .get('/todos/'+(now+10))
+      .get('/todos/'+String(now))
       .expect(410, done);
   });
 });
