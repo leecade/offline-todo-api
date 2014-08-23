@@ -6,6 +6,15 @@ Note: PUT is not supported as todos are intentionally not updateable in this ver
 
 ## Install and run
 
+Quick start:
+
+```
+npm install -g offline-todo-api
+offline-todo-api
+```
+
+Full development build:
+
 ```
 git clone git@github.com:matthew-andrews/offline-todo-api.git
 cd offline-todo-api
