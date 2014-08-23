@@ -15,6 +15,9 @@
   "bugs": {
     "url": "https://github.com/matthew-andrews/offline-todo-api/issues"
   },
+  "bin": {
+    "offline-todo-api": "./bin/offline-todo-api"
+  },
   "homepage": "https://github.com/matthew-andrews/offline-todo-api",
   "devDependencies": {
     "jshint": "^2.5.3",
